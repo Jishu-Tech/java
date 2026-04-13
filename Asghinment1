@@ -1,0 +1,424 @@
+1)Write a  programe to print frist 10 numbers Fibonacci sequence . Also print thesum of the sum of the numbers 
+import java.util.*;
+
+class fibo 
+{
+    void series()
+ {
+        int n1 = 0, n2 = 1, sum = 0;
+
+        System.out.print("Fibonacci Series: ");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.print(n1 + " ");
+            sum = sum + n1;
+
+            int next = n1 + n2;
+            n1 = n2;
+            n2 = next;
+        }
+
+        System.out.println("\nSum = " + sum);
+    }
+}
+
+class upDemo
+ {
+    public static void main(String[] args) 
+{
+        fibo obj = new fibo();
+        obj.series();
+    }
+}
+2)write a java programme to print primes from 1 to 1000
+ans:
+import java.util.*;
+
+class third
+{
+    void prime()
+    {
+        for (int i = 2; i <= 1000; i++)
+        {
+            fact(i);
+        }
+    }
+
+    void fact(int n)
+    {
+        int c = 0;
+        for(int i = 1; i <= n; i++)
+        {
+            if(n % i == 0)
+            {
+                c = c + 1;
+            }
+        }
+
+        if(c == 2)
+        {
+            System.out.print(n + " ");
+        }
+    }
+}
+
+class upDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        third obj = new third();
+        obj.prime();  
+    }
+}
+3)Wrirte a java code to print a fibonacci seris wherte only frist 8 possative numbers are present
+Ans:
+class FibPrime
+{
+    void show()
+    {
+        int a = 0, b = 1, c;
+        int count = 0;
+
+        while(count < 8)
+        {
+            c = a + b;
+            a = b;
+            b = c;
+
+            int f = 0;
+            for(int i = 1; i <= c; i++)
+            {
+                if(c % i == 0)
+                    f++;
+            }
+
+            if(f == 2)
+            {
+                System.out.print(c + " ");
+                count++;
+            }
+        }
+    }
+}
+
+class UpDemo
+{
+    public static void main(String[] args)
+    {
+        FibPrime obj = new FibPrime();
+        obj.show();
+    }
+}
+
+4)Write a java programme to print the following sequence 0,2,1,4,1,8,2,16,3,32,5,64,8,......... up toiven limit
+ans:
+import java.util.Scanner;
+class Sequence {
+
+    void printSequence(int n) {
+
+        int a = 0, b = 1;   
+        int ap = -1;        
+
+        for (int i = 1; i <= n; i++) {
+
+            if (i % 2 == 1) 
+            {
+                System.out.print(a);
+                int next = a + b;
+                a = b;
+                b = next;
+
+            }
+	    else 
+            {
+                System.out.print(ap);
+                ap = ap - 3;
+            }
+
+            if (i < n) 
+            {
+                System.out.print(",");
+            }
+        }
+    }
+}
+
+class UpDemo
+   {
+    public static void main(String args[])
+     {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter limit: ");
+        int n = sc.nextInt(); 
+
+        Sequence obj = new Sequence();
+        obj.printSequence(n); 
+    }
+}
+5)Write a java programmer to p[rint the fol;lowingsequence:  0,-1,1,-4,1,-7,2,-10,3,-13,5,-16,8,.......
+ans:
+import java.util.Scanner;
+class Sequence {
+
+    void printSequence(int n) {
+
+        int a = 0, b = 1;   
+        int ap = -1;        
+
+        for (int i = 1; i <= n; i++) {
+
+            if (i % 2 == 1) 
+            {
+                System.out.print(a);
+                int next = a + b;
+                a = b;
+                b = next;
+
+            }
+	    else 
+            {
+                System.out.print(ap);
+                ap = ap - 3;
+            }
+
+            if (i < n) 
+            {
+                System.out.print(",");
+            }
+        }
+    }
+}
+
+class UpDemo
+   {
+    public static void main(String args[])
+     {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter limit: ");
+        int n = sc.nextInt(); 
+
+        Sequence obj = new Sequence();
+        obj.printSequence(n); 
+    }
+}
+6)write a java programme to print tjhe factorial of a given number using any llop
+Ans:
+import java.util.Scanner;
+
+ class Factorial {
+
+    void fact(int n) {
+
+        int f = 1;
+
+        for (int i = 1; i <= n; i++) {
+            f = f * i;
+        }
+
+        System.out.println("Factorial of "+n +" is= " + f);
+    }
+}
+
+
+class UpDemo {
+    public static void main(String args[]) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        Factorial obj = new Factorial();
+        obj.fact(n);
+    }
+}
+
+7)Write a java programme torim=nt thefollowing sequence 
+2,1,4,2,6,6,8,24,10 an so onup to given limit
+
+Ans:
+import java.util.Scanner;
+class Sequence 
+ {
+    void cal(int n) 
+    {
+        int even = 2;
+        int fact = 1;
+        int k = 1;
+        for (int i = 1; i <= n; i++) 
+       {
+
+            if (i % 2 == 1) 
+           {
+                System.out.print(even);
+                even = even + 2;
+
+            } 
+            else 
+            {
+                fact = fact * k;
+                System.out.print(fact);
+                k++;
+            }
+
+            if (i < n)
+            {
+                System.out.print(",");
+            }
+        }
+    }
+}
+
+class p7 {
+    public static void main(String args[]) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter limit: ");
+        int n = sc.nextInt();
+
+        Sequence obj = new Sequence();
+        obj.cal(n);
+    }
+}
+
+8)Java progrtamme find GCD of two numbers
+Ans:
+import java.util.Scanner;
+
+class FindGCD
+{
+    void calc(int a, int b)
+    {
+        int gcd = 1;
+
+        for(int i = 1; i <= a && i <= b; i++)
+        {
+            if(a % i == 0 && b % i == 0)
+            {
+                gcd = i;
+            }
+        }
+
+        System.out.println("GCD = " + gcd);
+    }
+}
+
+class UpDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        int x = sc.nextInt();
+
+        System.out.print("Enter second number: ");
+        int y = sc.nextInt();
+
+        FindGCD obj = new FindGCD();
+        obj.calc(x, y);
+    }
+}
+
+9)writea a java programme to print sum of n terms in the seris 1/1! + 1/2! + 1/3! +................
+Ans:
+ import java.util.*;
+class seris {
+     void calac() {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+
+        double sum = 0;
+        int fact = 1;
+
+        for (int i = 1; i <= n; i++) {
+
+            fact = fact * i;       
+            sum = sum + (1.0 / fact);
+        }
+
+        System.out.println("Sum = " + sum);
+    }
+}
+class upDemo
+{
+ public static void main(String[] args)
+ {
+  seris obj = new seris();
+  obj.calac();
+ }
+}
+
+10) Java progreamme to display Alphabeys (A to z) using any loop
+Ans:
+
+class alpha
+{
+ void abc()
+ { 
+   System.out.println("The small letter alphebat is");
+   for(char i='a';i<='z';i++)
+   {
+     System.out.print(i+" ");
+   }
+   System.out.println("\nThe capital letter alphebat is");
+   for(char j='A';j<='Z';j++)
+   {
+     System.out.print(j+" ");
+   }
+
+  }
+};
+class upDemo
+{
+ public static void main(String[] args)
+ {
+   alpha obj=new alpha();
+   obj.abc();
+  }
+};
+
+11)Java programme to calculate the power of a numbers
+Ans:
+ import java.util.*;
+
+ class power {
+       void calc()
+       {
+        Scanner sc = new Scanner(System.in);
+	int base,exp,result = 1;
+
+        System.out.print("Enter base: ");
+        base = sc.nextInt();
+
+        System.out.print("Enter power: ");
+        exp = sc.nextInt();
+
+           for (int i = 1; i <= exp; i++) {
+            result = result * base;
+        }
+
+        System.out.println("Result = " + result);
+    }
+}
+class upDemo
+{
+ public static void main(String[] args)
+ {
+   power obj=new power();
+   obj.calc();
+  }
+};
+
+
+12)Java program to display the factors of a number.
