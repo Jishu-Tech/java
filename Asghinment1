@@ -422,3 +422,167 @@ class upDemo
 
 
 12)Java program to display the factors of a number.
+Ans:
+import java.util.Scanner;
+ class factor {
+    void cal() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        System.out.println("Factors are:");
+
+        for (int i = 1; i <= n; i++) {
+
+            if (n % i == 0) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+class upDemo
+{
+  public static void main(String[] args)
+  {
+    factor obj = new factor();
+    obj.cal();
+   }
+}
+
+13)java programme to check whether a number can be exprtesed as sum ofTwo Prime Numbers 
+Ans:
+import java.util.*;
+
+class PrimeCheck {
+    int isPrime(int n) {
+        if (n < 2)
+            return 0;
+
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0)
+                return 0;
+        }
+
+        return 1;
+    }
+
+    void checkSum(int num) {
+
+        int found = 0;
+
+        for (int i = 2; i <= num / 2; i++) {
+
+            if (isPrime(i) == 1 && isPrime(num - i) == 1) {
+                System.out.println(num + " = " + i + " + " + (num - i));
+                found = 1;
+            }
+        }
+
+        if (found == 0) {
+            System.out.println("Not possible");
+        }
+    }
+}
+
+class upDemo {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int n = sc.nextInt();
+
+        PrimeCheck obj = new PrimeCheck();
+        obj.checkSum(n);
+    }
+}
+
+14)Write a java programme to check wherther a number can be epalindromor not 
+Ans:
+import java.util.Scanner;
+
+class CheckPalindrome
+{
+    void check(int num)
+    {
+        int rev = 0, temp = num;
+
+        while(num > 0)
+        {
+            int d = num % 10;
+            rev = rev * 10 + d;
+            num = num / 10;
+        }
+
+        if(temp == rev)
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
+    }
+}
+
+class upDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number: ");
+        int n = sc.nextInt();
+
+        CheckPalindrome obj = new CheckPalindrome();
+        obj.check(n);
+    }
+}
+
+15)Write a program to genarate 5 random numbers between 1 to 100
+ans :
+
+import java.util.Random;
+
+class random
+{
+    void show()
+    {
+        Random r = new Random();
+
+        for(int i = 1; i <= 5; i++)
+        {
+            int num = r.nextInt(100) + 1; 
+            System.out.println(num);
+        }
+    }
+}
+
+class upDemo
+{
+    public static void main(String[] args)
+    {
+        random obj = new random();
+        obj.show();
+    }
+}
+
+16)write a programe to find sum of allinteger greater than 100 and less then 200 that are divisable by 7
+Ans:
+class SumCalc {
+    void cal() {
+        int sum = 0;
+
+        for (int i = 101; i < 200; i++) {
+            if (i % 7 == 0) {
+                sum += i;
+            }
+        }
+
+        System.out.println("Sum = " + sum);
+    }
+}
+
+class upDemo {
+    public static void main(String[] args) {
+
+        SumCalc obj = new SumCalc();
+        obj.cal();
+    }
+}
