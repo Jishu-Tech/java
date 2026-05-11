@@ -1,1 +1,519 @@
+1)Longest Common prefix
+code:
+import java.util.Scanner;
 
+class Prefix
+{
+    void common()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter number of strings:");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        String strs[] = new String[n];
+
+        for(int i = 0; i < n; i++)
+        {
+            System.out.println("Enter string:");
+            strs[i] = sc.nextLine();
+        }
+
+        String prefix = "";
+
+        for(int i = 0; i < strs[0].length(); i++)
+        {
+            char ch = strs[0].charAt(i);
+
+            boolean same = true;
+
+            for(int j = 1; j < n; j++)
+            {
+                if(i >= strs[j].length() || strs[j].charAt(i) != ch)
+                {
+                    same = false;
+                    break;
+                }
+            }
+
+            if(same)
+            {
+                prefix = prefix + ch;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        System.out.println("Longest Common Prefix = " + prefix);
+    }
+}
+
+class UpDemo
+{
+    public static void main(String args[])
+    {
+        Prefix obj = new Prefix();
+        obj.common();
+    }
+}
+2)Password Checker
+code:
+import java.util.Scanner;
+
+class Password
+{
+    Scanner sc = new Scanner(System.in);
+
+    void input()
+    {
+        System.out.println("Enter Password:");
+        String s = sc.nextLine();
+
+        char str[] = s.toCharArray();
+
+        int result = CheckPassword(str, str.length);
+
+        System.out.println(result);
+    }
+
+    int CheckPassword(char str[], int n)
+    {
+        int cap = 0;
+        int num = 0;
+
+        if(n < 4)
+        {
+            return 0;
+        }
+
+        if(str[0] >= '0' && str[0] <= '9')
+        {
+            return 0;
+        }
+
+        for(int i = 0; i < n; i++)
+        {
+            if(str[i] == ' ' || str[i] == '/')
+            {
+                return 0;
+            }
+
+            if(str[i] >= 'A' && str[i] <= 'Z')
+            {
+                cap = 1;
+            }
+
+            if(str[i] >= '0' && str[i] <= '9')
+            {
+                num = 1;
+            }
+        }
+
+        if(cap == 1 && num == 1)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
+}
+
+class UpDemo
+{
+    public static void main(String args[])
+    {
+        Password obj = new Password();
+
+        obj.input();
+    }
+}
+3)Letter combination of a phone number
+code:
+import java.util.Scanner;
+
+class Phone
+{
+    String map[] = {
+            "",
+            "",
+            "abc",
+            "def",
+            "ghi",
+            "jkl",
+            "mno",
+            "pqrs",
+            "tuv",
+            "wxyz"
+    };
+
+    void input()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter digits:");
+        String digits = sc.nextLine();
+
+        combination(digits, "");
+    }
+
+    void combination(String digits, String ans)
+    {
+        if(digits.length() == 0)
+        {
+            System.out.print(ans + " ");
+            return;
+        }
+
+        int num = digits.charAt(0) - '0';
+
+        String letters = map[num];
+
+        for(int i = 0; i < letters.length(); i++)
+        {
+            combination(digits.substring(1), ans + letters.charAt(i));
+        }
+    }
+}
+
+class UpDemo
+{
+    public static void main(String args[])
+    {
+        Phone obj = new Phone();
+
+        obj.input();
+    }
+}
+4)Findf all permutation of given string "XYZ"
+code:
+import java.util.Scanner;
+
+class Permutation
+{
+    void input()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter String:");
+        String str = sc.nextLine();
+
+        permute(str, "");
+    }
+
+    void permute(String str, String ans)
+    {
+        if(str.length() == 0)
+        {
+            System.out.print(ans + " ");
+            return;
+        }
+
+        for(int i = 0; i < str.length(); i++)
+        {
+            char ch = str.charAt(i);
+
+            String left = str.substring(0, i);
+
+            String right = str.substring(i + 1);
+
+            String rem = left + right;
+
+            permute(rem, ans + ch);
+        }
+    }
+}
+
+class UpDemo
+
+{
+    public static void main(String args[])
+    {
+        Permutation obj = new Permutation();
+
+        obj.input();
+    }
+}
+
+5)Angram check 
+code:
+import java.util.Scanner;
+
+class Anagram
+{
+    void check()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter first string:");
+        String s = sc.nextLine();
+
+        System.out.println("Enter second string:");
+        String t = sc.nextLine();
+
+        if(s.length() != t.length())
+        {
+            System.out.println("false");
+            return;
+        }
+
+        char a[] = s.toCharArray();
+        char b[] = t.toCharArray();
+
+        for(int i = 0; i < a.length; i++)
+        {
+            for(int j = i + 1; j < a.length; j++)
+            {
+                if(a[i] > a[j])
+                {
+                    char temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+
+                if(b[i] > b[j])
+                {
+                    char temp = b[i];
+                    b[i] = b[j];
+                    b[j] = temp;
+                }
+            }
+        }
+
+        int flag = 1;
+
+        for(int i = 0; i < a.length; i++)
+        {
+            if(a[i] != b[i])
+            {
+                flag = 0;
+                break;
+            }
+        }
+
+        if(flag == 1)
+        {
+            System.out.println("true");
+        }
+        else
+        {
+            System.out.println("false");
+        }
+    }
+}
+
+class UpDemo
+{
+    public static void main(String args[])
+    {
+        Anagram obj = new Anagram();
+
+        obj.check();
+    }
+}
+
+6)Replace prfanity in Text
+code:
+import java.util.Scanner;
+
+class Filter
+{
+    void replaceWords()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter text:");
+        String text = sc.nextLine();
+
+        String bad[] = {"bad", "ugly", "hate"};
+
+        for(int i = 0; i < bad.length; i++)
+        {
+            text = text.replace(bad[i], "***");
+        }
+
+        System.out.println("Filtered Text:");
+        System.out.println(text);
+    }
+}
+
+class UpDemo
+{
+    public static void main(String args[])
+    {
+        Filter obj = new Filter();
+
+        obj.replaceWords();
+    }
+}
+
+7)Unique Characters in a String
+code:
+import java.util.Scanner;
+
+class Unique
+{
+    void check()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter String:");
+        String str = sc.nextLine();
+
+        int flag = 1;
+
+        for(int i = 0; i < str.length(); i++)
+        {
+            for(int j = i + 1; j < str.length(); j++)
+            {
+                if(str.charAt(i) == str.charAt(j))
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+        }
+
+        if(flag == 1)
+        {
+            System.out.println("All characters are unique");
+        }
+        else
+        {
+            System.out.println("Duplicate characters found");
+        }
+    }
+}
+
+class upDemo
+{
+    public static void main(String args[])
+    {
+        Unique obj = new Unique();
+
+        obj.check();
+    }
+}
+
+8)Find Longext Word
+code:
+import java.util.Scanner;
+
+class LongestWord
+{
+    void find()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter sentence:");
+        String str = sc.nextLine();
+
+        String words[] = str.split(" ");
+
+        String longest = words[0];
+
+        for(int i = 1; i < words.length; i++)
+        {
+            if(words[i].length() > longest.length())
+            {
+                longest = words[i];
+            }
+        }
+
+        System.out.println("Longest word: " + longest);
+    }
+}
+
+class upDemo
+{
+    public static void main(String args[])
+    {
+        LongestWord obj = new LongestWord();
+
+        obj.find();
+    }
+}
+
+
+9)Convert sentencere into Title case
+
+code:
+import java.util.Scanner;
+
+class TitleCase
+{
+    void convert()
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter sentence:");
+        String str = sc.nextLine();
+
+        String words[] = str.split(" ");
+
+        String result = "";
+
+        for(int i = 0; i < words.length; i++)
+        {
+            String word = words[i];
+
+            char first = Character.toUpperCase(word.charAt(0));
+
+            String rest = word.substring(1);
+
+            result = result + first + rest + " ";
+        }
+
+        System.out.println("Title Case:");
+        System.out.println(result);
+    }
+}
+
+class upDemo
+{
+    public static void main(String args[])
+    {
+        TitleCase obj = new TitleCase();
+
+        obj.convert();
+    }
+}
+
+10) Extract Domain from URL
+code:
+import java.util.Scanner;
+import java.net.*;
+
+class urltest
+{
+    Scanner sc = new Scanner(System.in);
+
+    void show()
+    {
+        try
+        {
+            System.out.println("Enter URL:");
+            String s = sc.nextLine();
+
+            URL obj = new URL(s);
+
+            System.out.println(obj.getHost());
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
+class upDemo
+{
+    public static void main(String args[])
+    {
+        urltest obj = new urltest();
+
+        obj.show();
+    }
+}
